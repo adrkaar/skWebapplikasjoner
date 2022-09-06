@@ -1,6 +1,1 @@
-﻿namespace KundeApp
-{
-    public class readme
-    {
-    }
-}
+#Kunde app
