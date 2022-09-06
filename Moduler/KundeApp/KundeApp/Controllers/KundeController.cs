@@ -1,31 +1,24 @@
-﻿using KundeApp.Models;
+﻿using KundeApp.Model;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace KundeApp.Controllers
 {
     [Route("[controller]/[action]")]
     public class KundeController: ControllerBase
     {
+        private readonly KundeDB _kundeDB;
+
+        public KundeController(KundeDB kundeDb)
+        {
+            _kundeDB = kundeDb;
+        }
+
         public List<Kunde> HentAlle()
         {
-            var kundene = new List<Kunde>();
-
-            var kunde1 = new Kunde();
-
-            kunde1.navn = "Adriano navn";
-            kunde1.adresse = "Gatenesen 21";
-
-            var kunde2 = new Kunde
-            {
-                navn = "Navn navnesen",
-                adresse = "Adreseesne 292"
-            };
-
-            kundene.Add(kunde1);
-            kundene.Add(kunde2);
-
-            return kundene;
+            List<Kunde> alleKundene = _kundeDB.Kunder.ToList();
+            return alleKundene;
         }
     }
 }
