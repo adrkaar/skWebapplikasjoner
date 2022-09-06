@@ -17,8 +17,15 @@ namespace KundeApp.Controllers
 
         public List<Kunde> HentAlle()
         {
-            List<Kunde> alleKundene = _kundeDB.Kunder.ToList();
-            return alleKundene;
+            try
+            {
+                List<Kunde> alleKundene = _kundeDB.Kunder.ToList();
+                return alleKundene;
+            } catch
+            {
+                return null;
+            }
+            
         }
     }
 }

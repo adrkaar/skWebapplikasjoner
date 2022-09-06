@@ -19,7 +19,8 @@ namespace KundeApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<KundeDB>(options => options.UseSqlite("Data source=Kunde.db"));
+            services.AddDbContext<KundeDB>(options => 
+                options.UseSqlite("Data source=Kunde.db"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -31,6 +32,7 @@ namespace KundeApp
             }
 
             app.UseRouting();
+            app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
             {
